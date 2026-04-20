@@ -1,3 +1,12 @@
+// GLOBAL SCOPE
+let humanScore = 0;
+let computerScore = 0;
+
+// PLAYROUND FUNCTION
+
+
+
+// HUMAN AND COMPUTER CHOICE FUNCTION
 const getComputerChoice= () => {
     let num = Math.round(Math.random()*2);
     let choice;
@@ -30,5 +39,5 @@ const getHumanChoice = () => {
             break;
     }
     let choice = prompt('Select a choice [ROCK, PAPER, SCISSORS]', auto);
-    return choice.toUpperCase
+    return choice.toUpperCase();
 }
