@@ -4,7 +4,7 @@ let computerScore = 0;
 
 // PLAYROUND FUNCTION
 function playRound(human, computer) {
-    
+    announceChoice(human, computer)
     if (human === computer) return "TIE!"
 }
 
@@ -44,9 +44,13 @@ const getHumanChoice = () => {
     return choice.toUpperCase();
 }
 
-// ANNOUNCE CHOICE FUNCTION
+// ANNOUNCE CHOICE & SCORE FUNCTION
 const announceChoice = (human, computer) => {
     alert(`Player choice is ${human} vs Computer choice ${computer}!`)
+}
+
+const announceScore = (human, computer)  => {
+    alert(`[Player Score: ${human}][Computer Score: ${computer}]`)
 }
 
 // VERSUS FUNCTIONS
