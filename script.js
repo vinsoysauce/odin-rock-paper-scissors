@@ -3,12 +3,12 @@ let humanScore = 0;
 let computerScore = 0;
 
 // PLAYROUND & GAME FUNCTION
-function playGame(human, computer) {
-    playRound(human, computer)
-    playRound(human, computer)
-    playRound(human, computer)
-    playRound(human, computer)
-    playRound(human, computer)
+function playGame() {
+    playRound(getHumanChoice(), getComputerChoice())
+    playRound(getHumanChoice(), getComputerChoice())
+    playRound(getHumanChoice(), getComputerChoice())
+    playRound(getHumanChoice(), getComputerChoice())
+    playRound(getHumanChoice(), getComputerChoice())
     announceWinner(humanScore, computerScore)
 }
 
@@ -118,4 +118,4 @@ const whenScissors = (computer) => {
     announceScore(humanScore, computerScore)
 }
 
-playGame(getHumanChoice(), getComputerChoice())
+playGame()
