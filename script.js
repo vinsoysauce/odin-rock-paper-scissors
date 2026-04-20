@@ -3,6 +3,15 @@ let humanScore = 0;
 let computerScore = 0;
 
 // PLAYROUND & GAME FUNCTION
+function playGame(human, computer) {
+    playRound(human, computer)
+    playRound(human, computer)
+    playRound(human, computer)
+    playRound(human, computer)
+    playRound(human, computer)
+    announceWinner(humanScore, computerScore)
+}
+
 function playRound(human, computer) {
     announceChoice(human, computer)
     if (human == computer) alert("TIE!")
@@ -56,6 +65,16 @@ const announceScore = (human, computer)  => {
     alert(`[Player Score: ${human}][Computer Score: ${computer}]`)
 }
 
+const announceWinner = (human, computer) => {
+    if (human > computer) {
+        alert('Player final score is the highest! PLAYER WINS!')
+    } else if (human < computer) {
+        alert('Computer final score is the highest! COMPUTER WINS!')
+    } else {
+        alert('Both final score is tied! ODIN PROJECT WINS! LOL!')
+    }
+}
+
 // VERSUS FUNCTIONS
 const whenRock = (computer) => {
     switch(computer) {
@@ -68,6 +87,7 @@ const whenRock = (computer) => {
             humanScore += 1;
             break;
     }
+    announceScore(humanScore, computerScore)
 }
 
 const whenPaper = (computer) => {
@@ -81,6 +101,7 @@ const whenPaper = (computer) => {
             humanScore += 1;
             break;
     }
+    announceScore(humanScore, computerScore)
 }
 
 const whenScissors = (computer) => {
@@ -94,4 +115,7 @@ const whenScissors = (computer) => {
             humanScore += 1;
             break;
     }
+    announceScore(humanScore, computerScore)
 }
+
+playGame(getHumanChoice(), getComputerChoice())
