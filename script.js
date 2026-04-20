@@ -3,11 +3,13 @@ let humanScore = 0;
 let computerScore = 0;
 
 // PLAYROUND FUNCTION
-
-
+function playRound(human, computer) {
+    
+    if (human === computer) return "TIE!"
+}
 
 // HUMAN AND COMPUTER CHOICE FUNCTION
-const getComputerChoice= () => {
+const getComputerChoice = () => {
     let num = Math.round(Math.random()*2);
     let choice;
     switch(num) {
@@ -40,4 +42,18 @@ const getHumanChoice = () => {
     }
     let choice = prompt('Select a choice [ROCK, PAPER, SCISSORS]', auto);
     return choice.toUpperCase();
+}
+
+// ANNOUNCE CHOICE FUNCTION
+const announceChoice = (human, computer) => {
+    alert(`Player choice is ${human} vs Computer choice ${computer}!`)
+}
+
+// VERSUS FUNCTIONS
+const whenRock = (human, computer) => {
+    switch(computer) {
+        case 'PAPER':
+            computerScore += 1;
+            
+    }
 }
