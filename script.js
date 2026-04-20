@@ -2,10 +2,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
-// PLAYROUND FUNCTION
+// PLAYROUND & GAME FUNCTION
 function playRound(human, computer) {
     announceChoice(human, computer)
-    if (human === computer) return "TIE!"
+    if (human == computer) alert("TIE!")
+    if (human === 'ROCK') return whenRock(computer);
+    if (human === 'PAPER') return whenPaper(computer);
+    if (human === 'SCISSORS') return whenScissors(computer);
 }
 
 // HUMAN AND COMPUTER CHOICE FUNCTION
@@ -54,10 +57,41 @@ const announceScore = (human, computer)  => {
 }
 
 // VERSUS FUNCTIONS
-const whenRock = (human, computer) => {
+const whenRock = (computer) => {
     switch(computer) {
         case 'PAPER':
+            alert('YOU LOSE!')
             computerScore += 1;
-            
+            break;
+        case 'SCISSORS':
+            alert('YOU WIN!')
+            humanScore += 1;
+            break;
+    }
+}
+
+const whenPaper = (computer) => {
+    switch(computer) {
+        case 'SCISSORS':
+            alert('YOU LOSE!')
+            computerScore += 1;
+            break;
+        case 'ROCK':
+            alert('YOU WIN!')
+            humanScore += 1;
+            break;
+    }
+}
+
+const whenScissors = (computer) => {
+    switch(computer) {
+        case 'ROCK':
+            alert('YOU LOSE!')
+            computerScore += 1;
+            break;
+        case 'PAPER':
+            alert('YOU WIN!')
+            humanScore += 1;
+            break;
     }
 }
