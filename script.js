@@ -3,12 +3,7 @@ let humanScore = 0;
 let computerScore = 0;
 
 // PLAYROUND & GAME FUNCTION
-function playGame() {
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
-    playRound(getHumanChoice(), getComputerChoice())
+function playGame() {   
     announceWinner(humanScore, computerScore)
 }
 
