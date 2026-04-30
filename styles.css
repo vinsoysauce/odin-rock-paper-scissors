@@ -4,17 +4,17 @@ body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
+    gap: 30px;
 }
 
 .header {
     text-align: center;
-    margin: 30px;
 }
 
 #button-container {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
 }
 
