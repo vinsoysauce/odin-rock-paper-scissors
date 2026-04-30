@@ -4,44 +4,61 @@ let computerScore = 0;
 let playerChoice = '';
 let computerChoice = '';
 
-// PLAYROUND & GAME FUNCTION
-function playGame() {   
-    announceWinner(humanScore, computerScore)
+
+// PLAY ROUND & GAME FUNCTION
+function playGame() {
+    ask()   
+    getPlayerChoice()
 }
 
-function playRound(human, computer) {
-    announceChoice(human, computer)
-    if (human == computer) alert("TIE!")
-    if (human === 'ROCK') return whenRock(computer);
-    if (human === 'PAPER') return whenPaper(computer);
-    if (human === 'SCISSORS') return whenScissors(computer);
-}
-
-// HUMAN AND COMPUTER CHOICE FUNCTION
+// // HUMAN AND COMPUTER CHOICE FUNCTION
 const getComputerChoice = () => {
-    let num = Math.round(Math.random()*2);
-    let choices = ['ROCK', 'PAPER', 'SCISSORS'];
-    return choices[num];
+    const num = Math.round(Math.random()*2);
+    const choices = ['🪨', '📄', '✂️'];
+    computerChoice = choices[num];
 }
 
+const getPlayerChoice = () => {
+    const rock = document.querySelector('#rock');
+    const paper = document.querySelector('#paper');
+    const scissors = document.querySelector('#scissors');
+
+    rock.addEventListener('click', () => {
+        playerChoice = '🪨';
+        getComputerChoice()
+        announceChoice(playerChoice, computerChoice)
+    })
+    paper.addEventListener('click', () => {
+        playerChoice = '📄';
+        getComputerChoice()
+        announceChoice(playerChoice, computerChoice)
+    })
+    scissors.addEventListener('click', () => {
+        playerChoice = '✂️';
+        getComputerChoice()
+        announceChoice(playerChoice, computerChoice)
+    })
+}
 
 
 // ANNOUNCE CHOICE & SCORE FUNCTION
-const announceChoice = (human, computer) => {
-    alert(`Player choice is ${human} vs Computer choice ${computer}!`)
+const announceChoice = (player, computer) => {
+    display = `Player choice is ${player} vs Computer choice ${computer}`
+    changeDisplay(display);
 }
 
-const announceScore = (human, computer)  => {
-    alert(`[Player Score: ${human}][Computer Score: ${computer}]`)
+const announceScore = (player, computer)  => {
+    display = `[Player Score: ${player}][Computer Score: ${computer}]`
+    changeDisplay(display);
 }
 
-const announceWinner = (human, computer) => {
-    if (human > computer) {
-        alert('Player final score is the highest! PLAYER WINS!')
-    } else if (human < computer) {
-        alert('Computer final score is the highest! COMPUTER WINS!')
+const announceWinner = (player, computer) => {
+    if (player > computer) {
+        display = 'Player final score is the highest! PLAYER WINS!'
+    } else if (player < computer) {
+        display = 'Computer final score is the highest! COMPUTER WINS!'
     } else {
-        alert('Both final score is tied! ODIN PROJECT WINS! LOL!')
+        display = 'Both final score is tied! ODIN PROJECT WINS! LOL!';
     }
 }
 
@@ -51,9 +68,12 @@ const winOrLose = (player, computer) => {
     if ((player == 'ROCK' && computer == 'SCISSORS') ||
         (player == 'PAPER' && computer == 'ROCK') ||
         (player == 'SCISSORS' && computer == 'PAPER'))
-        return true
-    else {
-        return false
+        playerScore++
+    else if (player == computer) {
+        playerScore;
+        computerScore;
+    } else {
+        computerScore++
     }
 }
 
@@ -62,10 +82,15 @@ const winOrLose = (player, computer) => {
 // DISPLAY CONTAINER
 
 const container = document.querySelector('#display-container')
-const display = document.createElement('p');
-display.textContent = ''
-container.appendChild(display)
+const content = document.createElement('p');
 
-// playGame()
+const changeDisplay = (display) => {
+    content.textContent = display
+    container.appendChild(content)
+}
 
+const ask = () => {
+    confirm('Want to play 5 rounds of Rock Paper Scissors?') ? true : window.close();
+}
 
+playGame()
