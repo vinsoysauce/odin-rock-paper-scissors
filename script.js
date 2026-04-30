@@ -116,7 +116,9 @@ const ask = () => {
 
 const playAgain = () => {
     if (confirm('Want to play again?')) {
-        window.location.reload()
+        playerScore = 0;
+        computerScore = 0;
+        changeScore()
     } else {
         window.close();
     } 
