@@ -1,8 +1,12 @@
 // GLOBAL SCOPE VARIABLES
+const CHOICES = ['🪨', '📄', '✂️'];
 let playerScore = 0;
 let computerScore = 0;
 let playerChoice = '';
 let computerChoice = '';
+
+// CONTAINERS
+
 
 
 // PLAY ROUND & GAME FUNCTION
@@ -14,8 +18,7 @@ function playGame() {
 // // HUMAN AND COMPUTER CHOICE FUNCTION
 const getComputerChoice = () => {
     const num = Math.round(Math.random()*2);
-    const choices = ['🪨', '📄', '✂️'];
-    computerChoice = choices[num];
+    computerChoice = CHOICES[num];
 }
 
 const getPlayerChoice = () => {
@@ -26,23 +29,32 @@ const getPlayerChoice = () => {
     rock.addEventListener('click', () => {
         playerChoice = '🪨';
         getComputerChoice()
+        announceChoice(playerChoice, computerChoice)
         winOrLose(playerChoice, computerChoice)
         changeScore(playerScore, computerScore)
-        announceChoice(playerChoice, computerChoice)
+        if (playerScore === 5) {
+            announceWinner()
+        }
     })
     paper.addEventListener('click', () => {
         playerChoice = '📄';
         getComputerChoice()
+        announceChoice(playerChoice, computerChoice)
         winOrLose(playerChoice, computerChoice)
         changeScore(playerScore, computerScore)
-        announceChoice(playerChoice, computerChoice)
+        if (playerScore === 5) {
+            announceWinner()
+        }
     })
     scissors.addEventListener('click', () => {
         playerChoice = '✂️';
         getComputerChoice()
+        announceChoice(playerChoice, computerChoice)
         winOrLose(playerChoice, computerChoice)
         changeScore(playerScore, computerScore)
-        announceChoice(playerChoice, computerChoice)
+        if (playerScore === 5) {
+            announceWinner()
+        }
     })
 }
 
@@ -54,13 +66,12 @@ const announceChoice = (player, computer) => {
 }
 
 const announceWinner = (player, computer) => {
-    if (player > computer) {
-        display = '😀 final score is the highest! PLAYER WINS!'
-    } else if (player < computer) {
-        display = 'Computer final score is the highest! COMPUTER WINS!'
+    if (playerScore > computerScore) {
+        alert('CONGRATULATIONS! 😀 WINS!');
     } else {
-        display = 'Both final score is tied! ODIN PROJECT WINS! LOL!';
+        alert('BETTER LUCK NEXT TIME! 🤖 WINS!');
     }
+    playAgain() 
 }
 
 // WIN LOSE FUNCTIONS
@@ -79,7 +90,6 @@ const winOrLose = (player, computer) => {
 }
 
 
-
 // DISPLAY CONTAINER
 
 const container = document.querySelector('#display-container')
@@ -92,7 +102,6 @@ const changeScore = (human, computer) => {
     computerScoreDOM.textContent = computer;
 }
 
-
 const changeDisplay = (display) => {
     content.textContent = display
     container.appendChild(content)
@@ -100,6 +109,10 @@ const changeDisplay = (display) => {
 
 const ask = () => {
     confirm('Want to play Rock Paper Scissors? First to 5 wins!') ? true : window.close();
+}
+
+const playAgain = () => {
+    confirm('Want to play again?') ? window.reload() : window.close();
 }
 
 playGame()
