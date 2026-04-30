@@ -10,8 +10,8 @@ let computerChoice = '';
 
 
 // PLAY ROUND & GAME FUNCTION
-function playGame() {
-    ask()   
+function playGame() {  
+    ask()
     getPlayerChoice()
 }
 
@@ -32,8 +32,8 @@ const getPlayerChoice = () => {
         announceChoice(playerChoice, computerChoice)
         winOrLose(playerChoice, computerChoice)
         changeScore(playerScore, computerScore)
-        if (playerScore === 5) {
-            announceWinner()
+        if (playerScore == 5 || computerScore == 5) {
+            announceWinner(playerScore, computerScore)
         }
     })
     paper.addEventListener('click', () => {
@@ -42,8 +42,8 @@ const getPlayerChoice = () => {
         announceChoice(playerChoice, computerChoice)
         winOrLose(playerChoice, computerChoice)
         changeScore(playerScore, computerScore)
-        if (playerScore === 5) {
-            announceWinner()
+        if (playerScore == 5 || computerScore == 5) {
+            announceWinner(playerScore, computerScore)
         }
     })
     scissors.addEventListener('click', () => {
@@ -52,8 +52,8 @@ const getPlayerChoice = () => {
         announceChoice(playerChoice, computerChoice)
         winOrLose(playerChoice, computerChoice)
         changeScore(playerScore, computerScore)
-        if (playerScore === 5) {
-            announceWinner()
+        if (playerScore == 5 || computerScore == 5) {
+            announceWinner(playerScore, computerScore)
         }
     })
 }
@@ -66,10 +66,10 @@ const announceChoice = (player, computer) => {
 }
 
 const announceWinner = (player, computer) => {
-    if (playerScore > computerScore) {
-        alert('CONGRATULATIONS! 😀 WINS!');
+    if (playerScore === 5) {
+        alert('CONGRATULATIONS! YOU WON!');
     } else {
-        alert('BETTER LUCK NEXT TIME! 🤖 WINS!');
+        alert('BETTER LUCK NEXT TIME! COMPUTER WON!');
     }
     playAgain() 
 }
@@ -77,11 +77,11 @@ const announceWinner = (player, computer) => {
 // WIN LOSE FUNCTIONS
 
 const winOrLose = (player, computer) => {
-    if ((player == '🪨' && computer == '✂️') ||
-        (player == '📄' && computer == '🪨') ||
-        (player == '✂️' && computer == '📄'))
+    if ((player === '🪨' && computer === '✂️') ||
+        (player === '📄' && computer === '🪨') ||
+        (player === '✂️' && computer === '📄'))
         playerScore++
-    else if (player == computer) {
+    else if (player === computer) {
         playerScore;
         computerScore;
     } else {
@@ -96,6 +96,8 @@ const container = document.querySelector('#display-container')
 const content = document.createElement('p');
 const playerScoreDOM = document.querySelector('#human-score');
 const computerScoreDOM = document.querySelector('#computer-score');
+content.textContent = 'Pick among the choices 🪨 📄 ✂️'
+container.appendChild(content)
 
 const changeScore = (human, computer) => {
     playerScoreDOM.textContent = human;
@@ -112,7 +114,11 @@ const ask = () => {
 }
 
 const playAgain = () => {
-    confirm('Want to play again?') ? window.reload() : window.close();
+    if (confirm('Want to play again?')) {
+        window.location.reload()
+    } else {
+        window.close();
+    } 
 }
 
 playGame()
