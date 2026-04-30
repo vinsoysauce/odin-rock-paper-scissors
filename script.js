@@ -4,6 +4,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerChoice = '';
 let computerChoice = '';
+let display = 'Pick among the choices 🪨 📄 ✂️'
 
 // CONTAINERS
 
@@ -96,7 +97,7 @@ const container = document.querySelector('#display-container')
 const content = document.createElement('p');
 const playerScoreDOM = document.querySelector('#human-score');
 const computerScoreDOM = document.querySelector('#computer-score');
-content.textContent = 'Pick among the choices 🪨 📄 ✂️'
+content.textContent = display;
 container.appendChild(content)
 
 const changeScore = (human, computer) => {
