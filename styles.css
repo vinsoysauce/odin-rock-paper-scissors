@@ -4,7 +4,6 @@ body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 30px;
 }
 
 .header {
@@ -36,4 +35,5 @@ button {
 
 p {
     font-size: 30px;
+    margin: 20px;
 }
