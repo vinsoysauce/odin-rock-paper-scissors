@@ -1,6 +1,8 @@
-// GLOBAL SCOPE
-let humanScore = 0;
+// GLOBAL SCOPE VARIABLES
+let playerScore = 0;
 let computerScore = 0;
+let playerChoice = '';
+let computerChoice = '';
 
 // PLAYROUND & GAME FUNCTION
 function playGame() {   
@@ -43,47 +45,27 @@ const announceWinner = (human, computer) => {
     }
 }
 
-// VERSUS FUNCTIONS
-const whenRock = (computer) => {
-    switch(computer) {
-        case 'PAPER':
-            alert('YOU LOSE!')
-            computerScore += 1;
-            break;
-        case 'SCISSORS':
-            alert('YOU WIN!')
-            humanScore += 1;
-            break;
+// WIN LOSE FUNCTIONS
+
+const winOrLose = (player, computer) => {
+    if ((player == 'ROCK' && computer == 'SCISSORS') ||
+        (player == 'PAPER' && computer == 'ROCK') ||
+        (player == 'SCISSORS' && computer == 'PAPER'))
+        return true
+    else {
+        return false
     }
-    announceScore(humanScore, computerScore)
 }
 
-const whenPaper = (computer) => {
-    switch(computer) {
-        case 'SCISSORS':
-            alert('YOU LOSE!')
-            computerScore += 1;
-            break;
-        case 'ROCK':
-            alert('YOU WIN!')
-            humanScore += 1;
-            break;
-    }
-    announceScore(humanScore, computerScore)
-}
 
-const whenScissors = (computer) => {
-    switch(computer) {
-        case 'ROCK':
-            alert('YOU LOSE!')
-            computerScore += 1;
-            break;
-        case 'PAPER':
-            alert('YOU WIN!')
-            humanScore += 1;
-            break;
-    }
-    announceScore(humanScore, computerScore)
-}
 
-playGame()
+// DISPLAY CONTAINER
+
+const container = document.querySelector('#display-container')
+const display = document.createElement('p');
+display.textContent = ''
+container.appendChild(display)
+
+// playGame()
+
+
