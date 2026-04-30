@@ -33,23 +33,7 @@ const getComputerChoice = () => {
     return choice;
 }
 
-const getHumanChoice = () => {
-    let num = Math.round(Math.random()*2);
-    let auto;
-        switch(num) {
-        case 0:
-            auto = 'ROCK';
-            break;
-        case 1:
-            auto = 'PAPER';
-            break;
-        case 2:
-            auto = 'SCISSORS';
-            break;
-    }
-    let choice = prompt('Select a choice [ROCK, PAPER, SCISSORS]', auto);
-    return choice.toUpperCase();
-}
+
 
 // ANNOUNCE CHOICE & SCORE FUNCTION
 const announceChoice = (human, computer) => {
