@@ -6,12 +6,13 @@ let playerChoice = '';
 let computerChoice = '';
 let display = 'Pick among the choices 🪨 📄 ✂️'
 
-// DOM CONTAINERS
+// DOM CONTAINERS & VARIABLES
 
 const container = document.querySelector('#display-container')
 const content = document.createElement('p');
 const playerScoreDOM = document.querySelector('#human-score');
 const computerScoreDOM = document.querySelector('#computer-score');
+const buttons = document.querySelector('#button-container');
 content.textContent = display;
 container.appendChild(content)
 
@@ -30,31 +31,32 @@ function playRound() {
     checkWinner(playerScore, computerScore)
 }
 
-// // HUMAN AND COMPUTER CHOICE FUNCTION
+// PLAYER AND COMPUTER CHOICE FUNCTION
 const getComputerChoice = () => {
     const num = Math.round(Math.random()*2);
     computerChoice = CHOICES[num];
 }
 
 const getPlayerChoice = () => {
-    const rock = document.querySelector('#rock');
-    const paper = document.querySelector('#paper');
-    const scissors = document.querySelector('#scissors');
+    buttons.addEventListener('click', (event) => {
+        let target = event.target;
 
-    rock.addEventListener('click', () => {
-        playerChoice = '🪨';
-        playRound();
-    })
-    paper.addEventListener('click', () => {
-        playerChoice = '📄';
-        playRound();
-    })
-    scissors.addEventListener('click', () => {
-        playerChoice = '✂️';
+        switch(target.id) {
+            case 'rock':
+                playerChoice = CHOICES[0];
+                break;
+            case 'paper':
+                playerChoice = CHOICES[1];
+                break;
+            case 'scissors':
+                playerChoice = CHOICES[2];
+                break;
+        }
         playRound();
     })
 }
 
+getPlayerChoice()
 
 // ANNOUNCE CHOICE & SCORE FUNCTION
 const announceChoice = (player, computer) => {
@@ -69,12 +71,6 @@ const announceWinner = (player, computer) => {
         alert('BETTER LUCK NEXT TIME! COMPUTER WON!');
     }
     playAgain() 
-}
-
-const checkWinner = (player, computer) => {
-    if (playerScore == 5 || computerScore == 5) {
-        announceWinner(playerScore, computerScore)
-    }
 }
 
 // WIN LOSE FUNCTIONS
@@ -92,6 +88,14 @@ const winOrLose = (player, computer) => {
     }
 }
 
+const checkWinner = (player, computer) => {
+    if (playerScore == 5 || computerScore == 5) {
+        announceWinner(playerScore, computerScore)
+    }
+}
+
+// DOM CHANGING FUNCTIONS
+
 const changeScore = (human, computer) => {
     playerScoreDOM.textContent = human;
     computerScoreDOM.textContent = computer;
@@ -101,6 +105,9 @@ const changeDisplay = (display) => {
     content.textContent = display
     container.appendChild(content)
 }
+
+
+// ENTER AND EXIT FUNCTIONS
 
 const ask = () => {
     confirm('Want to play Rock Paper Scissors? First to 5 wins!') ? true : window.close();
