@@ -6,14 +6,28 @@ let playerChoice = '';
 let computerChoice = '';
 let display = 'Pick among the choices 🪨 📄 ✂️'
 
-// CONTAINERS
+// DOM CONTAINERS
 
+const container = document.querySelector('#display-container')
+const content = document.createElement('p');
+const playerScoreDOM = document.querySelector('#human-score');
+const computerScoreDOM = document.querySelector('#computer-score');
+content.textContent = display;
+container.appendChild(content)
 
 
 // PLAY ROUND & GAME FUNCTION
 function playGame() {  
     ask()
     getPlayerChoice()
+}
+
+function playRound() {
+    getComputerChoice()
+    announceChoice(playerChoice, computerChoice)
+    winOrLose(playerChoice, computerChoice)
+    changeScore(playerScore, computerScore)
+    checkWinner(playerScore, computerScore)
 }
 
 // // HUMAN AND COMPUTER CHOICE FUNCTION
@@ -29,33 +43,15 @@ const getPlayerChoice = () => {
 
     rock.addEventListener('click', () => {
         playerChoice = '🪨';
-        getComputerChoice()
-        announceChoice(playerChoice, computerChoice)
-        winOrLose(playerChoice, computerChoice)
-        changeScore(playerScore, computerScore)
-        if (playerScore == 5 || computerScore == 5) {
-            announceWinner(playerScore, computerScore)
-        }
+        playRound();
     })
     paper.addEventListener('click', () => {
         playerChoice = '📄';
-        getComputerChoice()
-        announceChoice(playerChoice, computerChoice)
-        winOrLose(playerChoice, computerChoice)
-        changeScore(playerScore, computerScore)
-        if (playerScore == 5 || computerScore == 5) {
-            announceWinner(playerScore, computerScore)
-        }
+        playRound();
     })
     scissors.addEventListener('click', () => {
         playerChoice = '✂️';
-        getComputerChoice()
-        announceChoice(playerChoice, computerChoice)
-        winOrLose(playerChoice, computerChoice)
-        changeScore(playerScore, computerScore)
-        if (playerScore == 5 || computerScore == 5) {
-            announceWinner(playerScore, computerScore)
-        }
+        playRound();
     })
 }
 
@@ -75,6 +71,12 @@ const announceWinner = (player, computer) => {
     playAgain() 
 }
 
+const checkWinner = (player, computer) => {
+    if (playerScore == 5 || computerScore == 5) {
+        announceWinner(playerScore, computerScore)
+    }
+}
+
 // WIN LOSE FUNCTIONS
 
 const winOrLose = (player, computer) => {
@@ -89,16 +91,6 @@ const winOrLose = (player, computer) => {
         computerScore++
     }
 }
-
-
-// DISPLAY CONTAINER
-
-const container = document.querySelector('#display-container')
-const content = document.createElement('p');
-const playerScoreDOM = document.querySelector('#human-score');
-const computerScoreDOM = document.querySelector('#computer-score');
-content.textContent = display;
-container.appendChild(content)
 
 const changeScore = (human, computer) => {
     playerScoreDOM.textContent = human;
