@@ -21,6 +21,9 @@ DOM:
 Events:
 - Using event listeners and callbacks to not repeat logic of the buttons via delegation
 
+Git:
+- Branching, checking another branch, merging, and deleting the branch.
+
 ## Comments
 This was my first Javascript project and I had alot of fun. The process of
 thinking about what functions to make, what variables to use, and how not to 
