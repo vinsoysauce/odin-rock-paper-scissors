@@ -18,7 +18,7 @@ container.appendChild(content)
 
 
 // PLAY ROUND & GAME FUNCTION
-function playGame() {  
+function playFirstGame() {  
     ask()
     getPlayerChoice()
 }
@@ -56,8 +56,6 @@ const getPlayerChoice = () => {
     })
 }
 
-getPlayerChoice()
-
 // ANNOUNCE CHOICE & SCORE FUNCTION
 const announceChoice = (player, computer) => {
     display = `😀 choice is ${player} vs 🤖 choice ${computer}`
@@ -74,16 +72,13 @@ const announceWinner = (player, computer) => {
 }
 
 // WIN LOSE FUNCTIONS
-
 const winOrLose = (player, computer) => {
+    if (player === computer) return
     if ((player === '🪨' && computer === '✂️') ||
         (player === '📄' && computer === '🪨') ||
         (player === '✂️' && computer === '📄'))
         playerScore++
-    else if (player === computer) {
-        playerScore;
-        computerScore;
-    } else {
+    else {
         computerScore++
     }
 }
@@ -95,7 +90,6 @@ const checkWinner = (player, computer) => {
 }
 
 // DOM CHANGING FUNCTIONS
-
 const changeScore = (human, computer) => {
     playerScoreDOM.textContent = human;
     computerScoreDOM.textContent = computer;
@@ -106,9 +100,7 @@ const changeDisplay = (display) => {
     container.appendChild(content)
 }
 
-
 // ENTER AND EXIT FUNCTIONS
-
 const ask = () => {
     confirm('Want to play Rock Paper Scissors? First to 5 wins!') ? true : window.close();
 }
@@ -123,4 +115,4 @@ const playAgain = () => {
     } 
 }
 
-playGame()
+playFirstGame()
