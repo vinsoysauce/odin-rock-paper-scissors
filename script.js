@@ -40,7 +40,7 @@ const getComputerChoice = () => {
 const getPlayerChoice = () => {
     buttons.forEach((button) => {
             button.addEventListener('click', function(event) {
-                playerChoice = event.target.id;
+                playerChoice = CHOICES[+event.target.id];
                 playRound();
         })
     })
