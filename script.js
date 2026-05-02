@@ -38,20 +38,8 @@ const getComputerChoice = () => {
 }
 
 const getPlayerChoice = () => {
-    buttons.addEventListener('click', (event) => {
-        let target = event.target;
-
-        switch(target.id) {
-            case 'rock':
-                playerChoice = CHOICES[0];
-                break;
-            case 'paper':
-                playerChoice = CHOICES[1];
-                break;
-            case 'scissors':
-                playerChoice = CHOICES[2];
-                break;
-        }
+    buttons.addEventListener('click', function(event) {
+        playerChoice = event.target.id;
         playRound();
     })
 }
@@ -84,7 +72,7 @@ const winOrLose = (player, computer) => {
 }
 
 const checkWinner = (player, computer) => {
-    if (playerScore == 5 || computerScore == 5) {
+    if (playerScore === 5 || computerScore === 5) {
         announceWinner(playerScore, computerScore)
     }
 }
