@@ -12,7 +12,7 @@ const container = document.querySelector('#display-container')
 const content = document.createElement('p');
 const playerScoreDOM = document.querySelector('#human-score');
 const computerScoreDOM = document.querySelector('#computer-score');
-const buttons = document.querySelector('#button-container');
+const buttons = document.querySelectorAll("button");
 content.textContent = display;
 container.appendChild(content)
 
@@ -38,9 +38,11 @@ const getComputerChoice = () => {
 }
 
 const getPlayerChoice = () => {
-    buttons.addEventListener('click', function(event) {
-        playerChoice = event.target.id;
-        playRound();
+    buttons.forEach((button) => {
+            button.addEventListener('click', function(event) {
+                playerChoice = event.target.id;
+                playRound();
+        })
     })
 }
 
