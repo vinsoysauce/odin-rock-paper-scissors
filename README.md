@@ -1,6 +1,6 @@
 ## ROCK PAPER SCISSORS
-An HTML5 and CSS project using the "Holy Grail" layout
-using flexbox and box model concepts.
+A Javascript project based on the famous game
+rock, paper, and scissors.
 
 ## Skills Demonstrated
 
